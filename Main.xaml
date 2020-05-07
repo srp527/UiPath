@@ -87,14 +87,14 @@
             <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
             <av:Size x:Key="ShapeSize">60,75</av:Size>
             <x:Double x:Key="Width">710</x:Double>
-            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,123.5</av:PointCollection>
+            <av:PointCollection x:Key="ConnectorLocation">330,40 560,40 560,205</av:PointCollection>
             <x:Double x:Key="Height">605</x:Double>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <Flowchart.StartNode>
           <x:Reference>__ReferenceID5</x:Reference>
         </Flowchart.StartNode>
-        <FlowStep x:Name="__ReferenceID5">
+        <FlowStep>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">200,123.5</av:Point>
@@ -538,7 +538,7 @@
                   <av:Size x:Key="ShapeSize">200,70</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="筛选东方航空, 发送邮件" sap:VirtualizedContainerService.HintSize="694,1610" sap2010:WorkflowViewState.IdRef="Sequence_28">
+              <Sequence DisplayName="筛选东方航空, 发送邮件" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_28">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="sd:DataTable" Name="d2" />
                 </Sequence.Variables>
@@ -640,7 +640,7 @@
                           <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="起飞时间" DataTable="[filterData]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="SortDataTable_1" Order="Ascending" OutputDataTable="[filterData]" />
                           <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[d1]" />
                           <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[filterData(0)(0).ToString +&quot;班次&quot; +filterData(0)(1).ToString+ &quot;航班将在&quot; + &quot;pm&quot;+filterData(0)(2).ToString + &quot;起飞，航班准点率为&quot; +filterData(0)(3).ToString]" />
-                          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[filterData(0)(0).ToString +&quot;班次&quot; +filterData(0)(1).ToString+ &quot;航班将在&quot; + &quot;pm &quot;+filterData(0)(2).ToString + &quot;起飞，航班准点率为&quot; +filterData(0)(3).ToString]" DisplayName="Send SMTP Mail Message" Email="244356095@qq.com" EnableSSL="True" From="244356095@qq.com" sap:VirtualizedContainerService.HintSize="334,151" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Name="宋仁鹏" Password="jurtazkqnarcbhgb" Port="465" SecureConnection="Auto" Server="smtp.qq.com" Subject="今日东方航空时间最近及准点率最高的航班班次" To="269584015@qq.com">
+                          <ui:SendMail MailMessage="{x:Null}" TimeoutMS="{x:Null}" Bcc="842880847@qq.com" Body="[filterData(0)(0).ToString +&quot;班次&quot; +filterData(0)(1).ToString+ &quot;航班将在&quot; + &quot;pm &quot;+filterData(0)(2).ToString + &quot;起飞，航班准点率为&quot; +filterData(0)(3).ToString]" Cc="269584015@qq.com" DisplayName="Send SMTP Mail Message" Email="244356095@qq.com" EnableSSL="True" From="244356095@qq.com" sap:VirtualizedContainerService.HintSize="334,151" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Name="宋仁鹏" Password="jurtazkqnarcbhgb" Port="465" SecureConnection="Auto" Server="smtp.qq.com" Subject="今日东方航空时间最近及准点率最高的航班班次" To="suifengheaven@hotmail.com">
                             <ui:SendMail.Files>
                               <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                             </ui:SendMail.Files>
@@ -655,6 +655,122 @@
           </FlowStep.Next>
         </FlowStep>
         <x:Reference>__ReferenceID4</x:Reference>
+        <FlowStep x:Name="__ReferenceID5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">460,205</av:Point>
+              <av:Size x:Key="ShapeSize">200,70</av:Size>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="筛选东方航空, test" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_56">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="d2" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="652,1327" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_7" WorkbookPath="H:\UiPath\2020-05-08-机票信息.xlsx">
+              <ui:ExcelApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="618,1218" sap2010:WorkflowViewState.IdRef="Sequence_55">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="sd:DataTable" Name="filterData" />
+                      <Variable x:TypeArguments="x:String" Name="dd" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="allData" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="sortData" />
+                      <Variable x:TypeArguments="x:Object" Name="filterTime" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelReadRange AddHeaders="True" DataTable="[allData]" DisplayName="读取excel数据" sap:VirtualizedContainerService.HintSize="576,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_4" PreserveFormat="True" SheetName="Sheet1">
+                      <ui:ExcelReadRange.Range>
+                        <InArgument x:TypeArguments="x:String">
+                          <Literal x:TypeArguments="x:String" Value="" />
+                        </InArgument>
+                      </ui:ExcelReadRange.Range>
+                    </ui:ExcelReadRange>
+                    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[allData]" DisplayName="遍历表格, 标记颜色" sap:VirtualizedContainerService.HintSize="576,506" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,357" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[row(&quot;航空公司&quot;).Equals(&quot;东方航空&quot;)]" sap:VirtualizedContainerService.HintSize="484,265" sap2010:WorkflowViewState.IdRef="If_5">
+                              <If.Then>
+                                <Sequence sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:ExcelSetRangeColor Color="[Color.Red]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_4" Range="[&quot;A&quot;&amp;allData.rows.indexOf(row)+2 &amp; &quot;:I&quot; &amp;allData.Rows.indexOf(row)+2]" SheetName="Sheet1" />
+                                </Sequence>
+                              </If.Then>
+                            </If>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ForEachRow>
+                    <Sequence DisplayName="筛选最早航班并发送邮件" sap:VirtualizedContainerService.HintSize="576,481" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:FilterDataTable DataTable="[allData]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[filterData]" SelectColumnsMode="Keep">
+                        <ui:FilterDataTable.Filters>
+                          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                            <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
+                              <ui:FilterOperationArgument.Column>
+                                <InArgument x:TypeArguments="x:String">["航空公司"]</InArgument>
+                              </ui:FilterOperationArgument.Column>
+                              <ui:FilterOperationArgument.Operand>
+                                <InArgument x:TypeArguments="x:String">["东方航空"]</InArgument>
+                              </ui:FilterOperationArgument.Operand>
+                            </ui:FilterOperationArgument>
+                          </scg:List>
+                        </ui:FilterDataTable.Filters>
+                        <ui:FilterDataTable.SelectColumns>
+                          <scg:List x:TypeArguments="InArgument" Capacity="4">
+                            <InArgument x:TypeArguments="x:String">["航空公司"]</InArgument>
+                            <InArgument x:TypeArguments="x:String">["飞机班次"]</InArgument>
+                            <InArgument x:TypeArguments="x:String">["起飞时间"]</InArgument>
+                            <InArgument x:TypeArguments="x:String">["到达准确率"]</InArgument>
+                          </scg:List>
+                        </ui:FilterDataTable.SelectColumns>
+                      </ui:FilterDataTable>
+                      <ui:SortDataTable ColumnIndex="{x:Null}" DataColumn="{x:Null}" ColumnName="起飞时间" DataTable="[filterData]" DisplayName="Sort Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="SortDataTable_2" Order="Ascending" OutputDataTable="[filterData]" />
+                      <ui:OutputDataTable DataTable="[filterData]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_11" Text="[d1]" />
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="[d1]" />
+                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="[filterData(0)(0).ToString +&quot;班次&quot; +filterData(0)(1).ToString+ &quot;航班将在&quot; + &quot;pm&quot;+filterData(0)(2).ToString + &quot;起飞，航班准点率为&quot; +filterData(0)(3).ToString]" />
+                    </Sequence>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ExcelApplicationScope.Body>
+            </ui:ExcelApplicationScope>
+          </Sequence>
+        </FlowStep>
       </Flowchart>
     </FlowStep>
     <FlowStep>
