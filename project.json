@@ -1,7 +1,7 @@
 {
   "name": "BlankProcess",
   "description": "Blank Process",
-  "main": "Main.xaml",
+  "main": "main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.7.1-ce]",
     "UiPath.Mail.Activities": "[1.7.1-ce]",
